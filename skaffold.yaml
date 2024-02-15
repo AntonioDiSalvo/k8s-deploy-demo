@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: k-s-deploy-demo--
+build:
+  artifacts:
+  - image: disalvoantonio/k8s-deploy-demo
+    custom:
+      buildCommand: ./mvnw spring-boot:build-image -D spring-boot.build-image.imageName=$IMAGE && docker push $IMAGE
+      dependencies:
+        paths:
+        - src
+        - pom.xml
+deploy:
+  kubectl:
+    manifests:
+    - k8s/deployment.yaml
+    - k8s/service.yaml
