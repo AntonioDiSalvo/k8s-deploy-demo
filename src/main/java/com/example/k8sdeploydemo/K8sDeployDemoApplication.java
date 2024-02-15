@@ -17,6 +17,6 @@ public class K8sDeployDemoApplication {
 	public String hello() {
 
 		System.out.println("foobar");
-		return "Ciao Mondo da K8s!! + readiness probe attiva";
+		return "Ciao Mondo da K8s!! + readiness probe attiva + skaffold!!";
 	}
 }
